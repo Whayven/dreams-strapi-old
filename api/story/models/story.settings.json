@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stories",
+  "info": {
+    "name": "Story"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 1
+    },
+    "author": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    },
+    "published": {
+      "type": "date",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true,
+      "minLength": 25
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "genres": {
+      "collection": "genre",
+      "via": "stories",
+      "dominant": true
+    }
+  }
+}
